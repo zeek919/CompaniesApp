@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { APICompanies, APIIncomes } from '../../constants/APIKeys';
+import { COMPANIES_API_URL, INCOMES_API_URL } from '../../constants/APIKeys';
 import Header from '../../components/Header/Header';
 import Table from '../../components/Table/Table';
 import { TABLE_HEADER } from '../../constants/tableHeader';
+import fetchCompaniesValues from '../../helpers/fetchCompaniesValues';
+import calculateTotalIncomes from '../../helpers/calculateTotalIncomes';
 
 class Root extends Component {
-    state = {
-        companiesData: '',
-        incomesData: '',
-    };
+    state = {};
 
     async componentDidMount() {
-        const companiesData = await axios.get(APICompanies);
-        this.setState({ companiesData: companiesData.data });
+        const companies = await axios.get(COMPANIES_API_URL);
+
+        const APIData = await Promise.all(
+            companies.data.map(async (item) => {
+                const fetchedCompaniesValues = await fetchCompaniesValues(
+                    item.id,
+                    INCOMES_API_URL
+                );
+
+                return {
+                    ...item,
+                    ...fetchedCompaniesValues,
+                };
+            })
+        );
+
+        const totalIncomesValue = calculateTotalIncomes(APIData);
+        this.setState(APIData);
     }
 
     render() {
