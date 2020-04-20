@@ -6,9 +6,12 @@ import Table from '../../components/Table/Table';
 import { TABLE_HEADER } from '../../constants/tableHeader';
 import fetchCompaniesValues from '../../helpers/fetchCompaniesValues';
 import calculateTotalIncomes from '../../helpers/calculateTotalIncomes';
+import calculateAverageIncomes from '../../helpers/calculateAverageIncomes';
 
 class Root extends Component {
-    state = {};
+    state = {
+        companies: [],
+    };
 
     async componentDidMount() {
         const companies = await axios.get(COMPANIES_API_URL);
@@ -27,9 +30,11 @@ class Root extends Component {
             })
         );
 
-        const totalIncomesValue = calculateTotalIncomes(APIData);
-        console.log(totalIncomesValue);
-        this.setState(APIData);
+        this.setState({ companies: APIData });
+        const totalIncomesValue = calculateTotalIncomes(this.state.companies);
+        this.setState({ companies: totalIncomesValue });
+        const averageIncomes = calculateAverageIncomes(this.state.companies);
+        this.setState({ companies: averageIncomes });
     }
 
     render() {
