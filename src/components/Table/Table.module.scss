@@ -1,0 +1,23 @@
+@import '../../styles/colorPalet.scss';
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.table {
+    background-color: $secondary;
+    width: 70em;
+}
+
+.header {
+    background-color: #efefef;
+}
+
+.tbody {
+    text-align: center;
+    font-size: 20px;
+    margin: 100px 0;
+}
