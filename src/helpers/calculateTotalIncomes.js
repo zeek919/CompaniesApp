@@ -1,13 +1,15 @@
 const calculateTotalIncomes = (array) => {
-    array.map((item) => {
-        const a = item.incomes.map((incomes) => {
-            let sum = 0;
-            sum += parseInt(incomes.value, 10);
-            return sum;
-        });
+    const a = array.map((item) => {
+        const sum = item.incomes.reduce((x, y) => {
+            // console.log(x);
+            return x + parseInt(y.value, 10);
+        }, 0);
 
-        return { ...item, a };
+        // console.log(sum);
+        return { ...item, totalIncome: sum };
     });
+
+    return a;
 };
 
 export default calculateTotalIncomes;

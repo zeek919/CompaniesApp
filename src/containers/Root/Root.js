@@ -28,6 +28,7 @@ class Root extends Component {
         );
 
         const totalIncomesValue = calculateTotalIncomes(APIData);
+        console.log(totalIncomesValue);
         this.setState(APIData);
     }
 
