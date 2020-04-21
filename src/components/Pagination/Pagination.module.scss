@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.button {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    color: blue;
+}
+
+.button:hover {
+    color: red;
+}
