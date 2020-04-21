@@ -10,7 +10,7 @@ const TableRecord = (items) => {
             <td>{record.city}</td>
             <td>{record.totalIncome}</td>
             <td>{record.averageIncome}</td>
-            <td>{record.lastMonthIncome}</td>
+            <td>{record.monthIncome}</td>
         </tr>
     ));
 

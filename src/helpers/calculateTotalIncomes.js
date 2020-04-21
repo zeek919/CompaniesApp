@@ -1,5 +1,5 @@
 const calculateTotalIncomes = (array) => {
-    const a = array.map((item) => {
+    const companies = array.map((item) => {
         const sum = item.incomes.reduce((x, y) => {
             return x + parseInt(y.value, 10);
         }, 0);
@@ -7,7 +7,7 @@ const calculateTotalIncomes = (array) => {
         return { ...item, totalIncome: sum };
     });
 
-    return a;
+    return companies;
 };
 
 export default calculateTotalIncomes;

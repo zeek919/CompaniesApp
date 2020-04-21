@@ -7,7 +7,7 @@ import { TABLE_HEADER } from '../../constants/tableHeader';
 import fetchCompaniesValues from '../../helpers/fetchCompaniesValues';
 import calculateTotalIncomes from '../../helpers/calculateTotalIncomes';
 import calculateAverageIncomes from '../../helpers/calculateAverageIncomes';
-
+import calculateLastMonthIncome from '../../helpers/calculateLastMonthIncome';
 class Root extends Component {
     state = {
         companies: [],
@@ -30,18 +30,18 @@ class Root extends Component {
             })
         );
 
-        this.setState({ companies: APIData });
-        const totalIncomesValue = calculateTotalIncomes(this.state.companies);
-        this.setState({ companies: totalIncomesValue });
-        const averageIncomes = calculateAverageIncomes(this.state.companies);
-        this.setState({ companies: averageIncomes });
+        const totalIncomesValue = calculateTotalIncomes(APIData);
+        const averageIncomes = calculateAverageIncomes(totalIncomesValue);
+        const monthIncomes = calculateLastMonthIncome(averageIncomes);
+
+        this.setState({ companies: monthIncomes });
     }
 
     render() {
         return (
             <div>
                 <Header title="CompaniesApp" />
-                <Table items={TABLE_HEADER} />
+                <Table headers={TABLE_HEADER} records={this.state.companies} />
             </div>
         );
     }
