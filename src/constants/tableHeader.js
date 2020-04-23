@@ -3,6 +3,6 @@ export const TABLE_HEADER = [
     'Name',
     'City',
     'Total income',
-    'Avergae income',
+    'Average income',
     'Last month income',
 ];

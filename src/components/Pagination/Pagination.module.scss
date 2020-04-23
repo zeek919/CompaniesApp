@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.button {
+    display: block;
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+}
+
+.activedItem {
+    @extend .button;
+    background-color: white;
+    font-weight: bold;
+    color: red;
+}
+
+.button:hover {
+    color: red;
+}
