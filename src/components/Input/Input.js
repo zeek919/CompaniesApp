@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './Filter.module.scss';
+import style from './Input.module.scss';
 
-const Filter = ({ placeholder, onChange }) => (
+const Input = ({ placeholder, onChange }) => (
     <div className={style.wrapper}>
         <input
             type="text"
@@ -13,9 +13,9 @@ const Filter = ({ placeholder, onChange }) => (
     </div>
 );
 
-Filter.propTypes = {
+Input.propTypes = {
     placeholder: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
 };
 
-export default Filter;
+export default Input;
