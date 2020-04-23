@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './Pagination.module.scss';
 
-const Pagination = ({ array, onClick }) => {
+const Pagination = ({ blocksToPaginate, onClick }) => {
     const [currentPage, setCurrentPage] = useState(0);
 
     const onClickHandler = (item, index) => {
@@ -10,7 +10,7 @@ const Pagination = ({ array, onClick }) => {
         onClick(item);
     };
 
-    const paginationButtons = array.map((item, index) => {
+    const paginationButtons = blocksToPaginate.map((item, index) => {
         const isActived = index === currentPage;
 
         return (
@@ -29,7 +29,7 @@ const Pagination = ({ array, onClick }) => {
 };
 
 Pagination.propTypes = {
-    array: PropTypes.array.isRequired,
+    blocksToPaginate: PropTypes.array.isRequired,
     onClick: PropTypes.func.isRequired,
 };
 export default React.memo(Pagination);

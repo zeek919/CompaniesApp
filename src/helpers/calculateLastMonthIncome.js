@@ -1,5 +1,5 @@
-const calculateLastMonthIncome = (array) => {
-    const companies = array.map((item) => {
+const calculateLastMonthIncome = (arrayWithIncomesData) => {
+    const companies = arrayWithIncomesData.map((item) => {
         const monthIncome = item.incomes.reduce((x, y) => {
             let isNotEmpty = true;
             const currentYear = new Date().getFullYear();
