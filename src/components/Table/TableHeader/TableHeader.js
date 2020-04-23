@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './TableHeader.module.scss';
 
-const TableHeader = (array, sort, sortImage) => {
-    const headers = array.map((element) => {
+const TableHeader = (headersArray, sortHandler, sortImageHandler) => {
+    const headers = headersArray.map((element) => {
         return (
             <th
-                onClick={() => sort(element)}
+                onClick={() => sortHandler(element)}
                 className={style.header}
                 key={element}
             >
                 {element}
-                {sortImage(element)}
+                {sortImageHandler(element)}
             </th>
         );
     });
@@ -20,13 +20,13 @@ const TableHeader = (array, sort, sortImage) => {
 };
 
 TableHeader.propTypes = {
-    array: PropTypes.array.isRequired,
-    sort: PropTypes.func.isRequired,
-    sortImage: PropTypes.func,
+    headersArray: PropTypes.array.isRequired,
+    sortHandler: PropTypes.func.isRequired,
+    sortImageHandler: PropTypes.func,
 };
 
 TableHeader.defaultProps = {
-    sortImage: () => '',
+    sortImageHandler: () => '',
 };
 
 export default TableHeader;
