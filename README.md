@@ -38,7 +38,7 @@ const companies = await axios.get(COMPANIES_API_URL);
 
 Except this, data are edited. Functions _(that are described below)_ add to them some other fields like: **Total Income**, **Average Income**, **Last month income**.
 
-###Table
+### Table
 
 The main task of _Table_ is to render table with downloaded values, pagination and input to filter data. _Table_ has some function that above components are using.
 
@@ -62,7 +62,7 @@ Components method:
 
 **filterHandler( e )** - Is getting value from _Input_, using _filterPharse()_ to return only desirable data and setting them on state.
 
-###TableHeader
+### TableHeader
 
 Returns header of table
 
@@ -87,7 +87,8 @@ Props:
 **sortHandler** - sort method.
 **sortImageHandler** - method retruns image of sort order
 
-###TableRecords
+### TableRecords
+
 Returns records of table
 
 ```
