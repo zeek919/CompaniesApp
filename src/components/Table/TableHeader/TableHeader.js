@@ -16,24 +16,7 @@ const TableHeader = (array, sort, sortImage) => {
         );
     });
 
-    const mobileHeaders = array.map((element) => {
-        return (
-            <button
-                className={style.button}
-                onClick={() => sort(element)}
-                key={element}
-            >
-                {element}
-                {sortImage(element)}
-            </button>
-        );
-    });
-
-    if (window.screen.width > 600) {
-        return headers;
-    } else {
-        return mobileHeaders;
-    }
+    return headers;
 };
 
 TableHeader.propTypes = {

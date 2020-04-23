@@ -5,23 +5,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5em;
+    margin: 10px;
+    overflow: auto;
 
     @include forMobile {
-        flex-direction: column;
+        display: block;
     }
+}
+
+.table {
+    background-color: $secondary;
 }
 
 .recordWrapper {
     display: flex;
     flex-direction: column;
-    width: 90vw;
     margin-top: 2em;
-}
-
-.table {
-    background-color: $secondary;
-    width: 70em;
 }
 
 .header {

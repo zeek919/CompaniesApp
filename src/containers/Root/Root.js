@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { COMPANIES_API_URL, INCOMES_API_URL } from '../../constants/APIKeys';
+import { COMPANIES_API_URL, INCOMES_API_URL } from '../../constants/apiUrl';
 import { TABLE_HEADER } from '../../constants/tableHeader';
 import Header from '../../components/Header/Header';
 import Table from '../../components/Table/Table';
@@ -12,7 +12,7 @@ import divideIntoPaginationBlocks from '../../helpers/divideIntoPaginationBlocks
 import Pagination from '../../components/Pagination/Pagination';
 import selectionSortAscending from '../../helpers/selectionSortAscending';
 import selectionSortDescending from '../../helpers/selectionSortDescending';
-import Filter from '../../components/Filter/Filter';
+import Input from '../../components/Input/Input';
 import filterPhrase from '../../helpers/filterPhrase';
 import arrowDown from '../../assets/arrowDown.png';
 import arrowUp from '../../assets/arrowUp.png';
@@ -24,11 +24,10 @@ class Root extends Component {
         temporaryData: [],
         paginationBlocks: [],
         currentPage: [],
-        order: 'ascending', // DO STALEJ
+        order: 'ascending',
     };
 
     async componentDidMount() {
-        // TRY CATCH
         const companies = await axios.get(COMPANIES_API_URL);
 
         const APIData = await Promise.all(
@@ -141,17 +140,17 @@ class Root extends Component {
         return (
             <div>
                 <Header title="CompaniesApp" />
-                <Filter
+                <Input
                     placeholder="Filter results"
                     onChange={(e) => this.filterHandler(e)}
                 />
                 <Table
                     headers={TABLE_HEADER}
                     records={this.state.currentPage}
-                    sort={(tag) => this.handleSort(tag)} // DO POPRAWY
+                    sort={(tag) => this.handleSort(tag)}
                     sortImage={(sortedElement) =>
                         this.handleSortImage(sortedElement)
-                    } // sortowanie do komponentu
+                    }
                 />
                 <Pagination
                     array={this.state.paginationBlocks}

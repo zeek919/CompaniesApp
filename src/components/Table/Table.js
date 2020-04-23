@@ -8,25 +8,16 @@ const Table = ({ headers, records, sort, sortImage }) => {
     const tableHeaders = TableHeader(headers, sort, sortImage);
     const tableRecord = TableRecord(records);
 
-    if (window.screen.width > 600) {
-        return (
-            <div className={style.wrapper}>
-                <table className={style.table}>
-                    <thead>
-                        <tr className={style.header}>{tableHeaders}</tr>
-                    </thead>
-                    <tbody className={style.tbody}>{tableRecord}</tbody>
-                </table>
-            </div>
-        );
-    } else {
-        return (
-            <div className={style.wrapper}>
-                {tableHeaders}
-                <div className={style.recordWrapper}>{tableRecord}</div>
-            </div>
-        );
-    }
+    return (
+        <div className={style.wrapper}>
+            <table className={style.table}>
+                <thead>
+                    <tr className={style.header}>{tableHeaders}</tr>
+                </thead>
+                <tbody className={style.tbody}>{tableRecord}</tbody>
+            </table>
+        </div>
+    );
 };
 
 Table.propTypes = {
