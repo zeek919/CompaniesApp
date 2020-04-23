@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.animation {
+    animation: rotate 10s linear infinite;
+}
+
+.text {
+    margin-top: 1em;
+    color: white;
+    font-size: 24px;
+}

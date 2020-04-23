@@ -1,16 +1,49 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './TableHeader.module.scss';
 
-const TableHeader = (items) => {
-    const headers = items.map((element) => {
+const TableHeader = (array, sort, sortImage) => {
+    const headers = array.map((element) => {
         return (
-            <th className={style.record} key={element}>
+            <th
+                onClick={() => sort(element)}
+                className={style.header}
+                key={element}
+            >
                 {element}
+                {sortImage(element)}
             </th>
         );
     });
 
-    return headers;
+    const mobileHeaders = array.map((element) => {
+        return (
+            <button
+                className={style.button}
+                onClick={() => sort(element)}
+                key={element}
+            >
+                {element}
+                {sortImage(element)}
+            </button>
+        );
+    });
+
+    if (window.screen.width > 600) {
+        return headers;
+    } else {
+        return mobileHeaders;
+    }
+};
+
+TableHeader.propTypes = {
+    array: PropTypes.array.isRequired,
+    sort: PropTypes.func.isRequired,
+    sortImage: PropTypes.func,
+};
+
+TableHeader.defaultProps = {
+    sortImage: () => '',
 };
 
 export default TableHeader;

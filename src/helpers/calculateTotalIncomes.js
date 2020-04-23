@@ -4,7 +4,7 @@ const calculateTotalIncomes = (array) => {
             return x + parseInt(y.value, 10);
         }, 0);
 
-        return { ...item, totalIncome: sum };
+        return { ...item, totalincome: sum };
     });
 
     return companies;

@@ -1,0 +1,26 @@
+@import '../../styles//media.module.scss';
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+    @include forMobile {
+        margin-top: 2em;
+    }
+}
+
+.input {
+    padding: 15px;
+    border-radius: 15px;
+    background: white;
+    border: none;
+    width: 40vw;
+
+    @include forMobile {
+        width: 80vw;
+    }
+}
+
+.input::placeholder {
+    text-align: center;
+}

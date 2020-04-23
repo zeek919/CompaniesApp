@@ -1,8 +1,10 @@
 const divideIntoPaginationBlocks = (array) => {
     const blocks = [];
-    const pages = array.length / 10;
+    const pages = Math.ceil(array.length / 10);
+
     for (let i = 1; i <= pages; i++) {
-        blocks.push(array.slice((i - 1) * 10, i * 10));
+        const singlePage = array.slice((i - 1) * 10, i * 10);
+        blocks.push(singlePage);
     }
 
     return blocks;

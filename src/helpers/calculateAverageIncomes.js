@@ -1,9 +1,9 @@
 const calculateAverageIncomes = (array) => {
     const companies = array.map((item) => {
         const size = item.incomes.length;
-        const average = item.totalIncome / size;
+        const average = item.totalincome / size;
 
-        return { ...item, averageIncome: average };
+        return { ...item, averageincome: average };
     });
 
     return companies;
