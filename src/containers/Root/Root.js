@@ -15,10 +15,6 @@ class Root extends Component {
     state = {
         isLoading: true,
         companies: [],
-        temporaryData: [],
-        paginationBlocks: [],
-        currentPage: [],
-        order: 'ascending',
     };
 
     async componentDidMount() {

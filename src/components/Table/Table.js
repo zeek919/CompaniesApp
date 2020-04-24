@@ -23,10 +23,15 @@ class Table extends Component {
         paginationBlocks: [],
         currentPage: [],
         order: 'ascending',
+        usedBefore: false,
     };
 
-    async componentDidMount() {
-        const paginate = await divideIntoPaginationBlocks(this.props.data);
+    changeUsedBeforeState(value) {
+        this.setState({ usedBefore: value });
+    }
+
+    componentDidMount() {
+        const paginate = divideIntoPaginationBlocks(this.props.data);
         this.setState({
             data: this.props.data,
             temporaryData: this.props.data,
@@ -113,11 +118,19 @@ class Table extends Component {
     }
 
     render() {
+        const usedBefore = () =>
+            !this.state.usedBefore ? (
+                <img src={arrowDown} style={{ width: '16px' }} />
+            ) : null;
+
         const tableHeaders = TableHeader(
             this.props.headers,
             (tagNameToSortBy) => this.handleSort(tagNameToSortBy),
-            (elementName) => this.handleSortImage(elementName)
+            (elementName) => this.handleSortImage(elementName),
+            (value) => this.changeUsedBeforeState(value),
+            usedBefore
         );
+
         const tableRecord = TableRecord(this.state.currentPage);
 
         return (
