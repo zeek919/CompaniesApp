@@ -75,6 +75,8 @@ TableHeader.propTypes = {
     headersArray: PropTypes.array.isRequired,
     sortHandler: PropTypes.func.isRequired,
     sortImageHandler: PropTypes.func,
+    wasUsedBefore: PropTypes.func.isRequired,
+    changeValueUsedBefore: PropTypes.func.isRequired,
 };
 
 TableHeader.defaultProps = {
@@ -86,6 +88,8 @@ Props:
 **headerArray** - array of headers.
 **sortHandler** - sort method.
 **sortImageHandler** - method retruns image of sort order
+**wasUsedBefore** - check if any buttons were used before
+**changeValueUsedBefore** - change state value for "wasUsedBefore"
 
 ### TableRecords
 
